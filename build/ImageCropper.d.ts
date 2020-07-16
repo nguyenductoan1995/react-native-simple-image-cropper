@@ -9,6 +9,7 @@ interface IProps {
     areaOverlay?: ReactNode;
     setCropperParams: (params: ICropperParams) => void;
     renderVideo?: any;
+    getSize?: any;
 }
 export interface IState {
     positionX: number;
@@ -55,10 +56,6 @@ declare class ImageCropper extends PureComponent<IProps, IState> {
     componentDidMount(): void;
     componentDidUpdate(prevProps: IProps): void;
     init: () => void;
-    getSizeVideo({ width, height }: {
-        width?: number | undefined;
-        height?: number | undefined;
-    }): void;
     handleMove: ({ positionX, positionY, scale }: IImageViewerData) => void;
     render(): JSX.Element | null;
 }

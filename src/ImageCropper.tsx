@@ -1,7 +1,11 @@
 import React, { PureComponent, ReactNode } from 'react';
-import { Image, Dimensions } from 'react-native';
+import { 
+  // Image,
+   Dimensions
+   } from 'react-native';
 import ImageEditor from '@react-native-community/image-editor';
 import ImageViewer from './ImageViewer';
+// import Video from 'react-native-video'
 import {
   getPercentFromNumber,
   getPercentDiffNumberFromNumber,
@@ -22,6 +26,7 @@ interface IProps {
   areaOverlay?: ReactNode;
   setCropperParams: (params: ICropperParams) => void;
   renderVideo?: any
+  getSize?: any
 }
 
 export interface IState {
@@ -175,11 +180,10 @@ class ImageCropper extends PureComponent<IProps, IState> {
   }
 
   init = () => {
-    const { imageUri } = this.props;
-
-    Image.getSize(
+    const { imageUri,getSize } = this.props;
+   getSize(
       imageUri,
-      (width, height) => {
+      (width = 0, height= 0) => {
         const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
 
         const areaWidth = cropAreaWidth!;
@@ -239,66 +243,128 @@ class ImageCropper extends PureComponent<IProps, IState> {
       },
       () => {},
     );
+    // Image.getSize(
+    //   imageUri,
+    //   (width, height) => {
+    //     const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
+
+    //     const areaWidth = cropAreaWidth!;
+    //     const areaHeight = cropAreaHeight!;
+
+    //     const srcSize = { width, height };
+    //     const fittedSize = { width: 0, height: 0 };
+    //     let scale = 1;
+
+    //     if (width > height) {
+    //       const ratio = w / height;
+    //       fittedSize.width = width * ratio;
+    //       fittedSize.height = w;
+    //     } else if (width < height) {
+    //       const ratio = w / width;
+    //       fittedSize.width = w;
+    //       fittedSize.height = height * ratio;
+    //     } else if (width === height) {
+    //       fittedSize.width = w;
+    //       fittedSize.height = w;
+    //     }
+
+    //     if (areaWidth < areaHeight || areaWidth === areaHeight) {
+    //       if (width < height) {
+    //         if (fittedSize.height < areaHeight) {
+    //           scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+    //         } else {
+    //           scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+    //         }
+    //       } else {
+    //         scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+    //       }
+    //     }
+
+    //     scale = scale < 1 ? 1 : scale;
+
+    //     this.setState(
+    //       prevState => ({
+    //         ...prevState,
+    //         srcSize,
+    //         fittedSize,
+    //         minScale: scale,
+    //         loading: false,
+    //       }),
+    //       () => {
+    //         const { positionX, positionY } = this.state;
+
+    //         setCropperParams({
+    //           positionX,
+    //           positionY,
+    //           scale,
+    //           srcSize,
+    //           fittedSize,
+    //         });
+    //       },
+    //     );
+    //   },
+    //   () => {},
+    // );
   };
 
-  getSizeVideo({width= 0, height=0}) {
-    const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
+  // getSizeVideo({width= 0, height=0}) {
+  //   const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
 
-    const areaWidth = cropAreaWidth!;
-    const areaHeight = cropAreaHeight!;
+  //   const areaWidth = cropAreaWidth!;
+  //   const areaHeight = cropAreaHeight!;
 
-    const srcSize = { width, height };
-    const fittedSize = { width: 0, height: 0 };
-    let scale = 1;
+  //   const srcSize = { width, height };
+  //   const fittedSize = { width: 0, height: 0 };
+  //   let scale = 1;
 
-    if (width > height) {
-      const ratio = w / height;
-      fittedSize.width = width * ratio;
-      fittedSize.height = w;
-    } else if (width < height) {
-      const ratio = w / width;
-      fittedSize.width = w;
-      fittedSize.height = height * ratio;
-    } else if (width === height) {
-      fittedSize.width = w;
-      fittedSize.height = w;
-    }
+  //   if (width > height) {
+  //     const ratio = w / height;
+  //     fittedSize.width = width * ratio;
+  //     fittedSize.height = w;
+  //   } else if (width < height) {
+  //     const ratio = w / width;
+  //     fittedSize.width = w;
+  //     fittedSize.height = height * ratio;
+  //   } else if (width === height) {
+  //     fittedSize.width = w;
+  //     fittedSize.height = w;
+  //   }
 
-    if (areaWidth < areaHeight || areaWidth === areaHeight) {
-      if (width < height) {
-        if (fittedSize.height < areaHeight) {
-          scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
-        } else {
-          scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
-        }
-      } else {
-        scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
-      }
-    }
+  //   if (areaWidth < areaHeight || areaWidth === areaHeight) {
+  //     if (width < height) {
+  //       if (fittedSize.height < areaHeight) {
+  //         scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+  //       } else {
+  //         scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+  //       }
+  //     } else {
+  //       scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+  //     }
+  //   }
 
-    scale = scale < 1 ? 1 : scale;
+  //   scale = scale < 1 ? 1 : scale;
 
-    this.setState(
-      prevState => ({
-        ...prevState,
-        srcSize,
-        fittedSize,
-        minScale: scale,
-        loading: false,
-      }),
-      () => {
-        const { positionX, positionY } = this.state;
+  //   this.setState(
+  //     prevState => ({
+  //       ...prevState,
+  //       srcSize,
+  //       fittedSize,
+  //       minScale: scale,
+  //       loading: false,
+  //     }),
+  //     () => {
+  //       const { positionX, positionY } = this.state;
 
-        setCropperParams({
-          positionX,
-          positionY,
-          scale,
-          srcSize,
-          fittedSize,
-        });
-      },
-    );
-  }
+  //       setCropperParams({
+  //         positionX,
+  //         positionY,
+  //         scale,
+  //         srcSize,
+  //         fittedSize,
+  //       });
+  //     },
+  //   );
+  // }
 
   handleMove = ({ positionX, positionY, scale }: IImageViewerData) => {
     const { setCropperParams } = this.props;

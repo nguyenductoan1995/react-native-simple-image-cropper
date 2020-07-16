@@ -38,6 +38,7 @@ var react_1 = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var image_editor_1 = __importDefault(require("@react-native-community/image-editor"));
 var ImageViewer_1 = __importDefault(require("./ImageViewer"));
+// import Video from 'react-native-video'
 var percentCalculator_1 = require("./helpers/percentCalculator");
 var window = react_native_1.Dimensions.get('window');
 var w = window.width;
@@ -70,8 +71,10 @@ var ImageCropper = /** @class */ (function (_super) {
             prevImageUri: '',
         };
         _this.init = function () {
-            var imageUri = _this.props.imageUri;
-            react_native_1.Image.getSize(imageUri, function (width, height) {
+            var _a = _this.props, imageUri = _a.imageUri, getSize = _a.getSize;
+            getSize(imageUri, function (width, height) {
+                if (width === void 0) { width = 0; }
+                if (height === void 0) { height = 0; }
                 var _a = _this.props, setCropperParams = _a.setCropperParams, cropAreaWidth = _a.cropAreaWidth, cropAreaHeight = _a.cropAreaHeight;
                 var areaWidth = cropAreaWidth;
                 var areaHeight = cropAreaHeight;
@@ -118,7 +121,113 @@ var ImageCropper = /** @class */ (function (_super) {
                     });
                 });
             }, function () { });
+            // Image.getSize(
+            //   imageUri,
+            //   (width, height) => {
+            //     const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
+            //     const areaWidth = cropAreaWidth!;
+            //     const areaHeight = cropAreaHeight!;
+            //     const srcSize = { width, height };
+            //     const fittedSize = { width: 0, height: 0 };
+            //     let scale = 1;
+            //     if (width > height) {
+            //       const ratio = w / height;
+            //       fittedSize.width = width * ratio;
+            //       fittedSize.height = w;
+            //     } else if (width < height) {
+            //       const ratio = w / width;
+            //       fittedSize.width = w;
+            //       fittedSize.height = height * ratio;
+            //     } else if (width === height) {
+            //       fittedSize.width = w;
+            //       fittedSize.height = w;
+            //     }
+            //     if (areaWidth < areaHeight || areaWidth === areaHeight) {
+            //       if (width < height) {
+            //         if (fittedSize.height < areaHeight) {
+            //           scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+            //         } else {
+            //           scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+            //         }
+            //       } else {
+            //         scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+            //       }
+            //     }
+            //     scale = scale < 1 ? 1 : scale;
+            //     this.setState(
+            //       prevState => ({
+            //         ...prevState,
+            //         srcSize,
+            //         fittedSize,
+            //         minScale: scale,
+            //         loading: false,
+            //       }),
+            //       () => {
+            //         const { positionX, positionY } = this.state;
+            //         setCropperParams({
+            //           positionX,
+            //           positionY,
+            //           scale,
+            //           srcSize,
+            //           fittedSize,
+            //         });
+            //       },
+            //     );
+            //   },
+            //   () => {},
+            // );
         };
+        // getSizeVideo({width= 0, height=0}) {
+        //   const { setCropperParams, cropAreaWidth, cropAreaHeight } = this.props;
+        //   const areaWidth = cropAreaWidth!;
+        //   const areaHeight = cropAreaHeight!;
+        //   const srcSize = { width, height };
+        //   const fittedSize = { width: 0, height: 0 };
+        //   let scale = 1;
+        //   if (width > height) {
+        //     const ratio = w / height;
+        //     fittedSize.width = width * ratio;
+        //     fittedSize.height = w;
+        //   } else if (width < height) {
+        //     const ratio = w / width;
+        //     fittedSize.width = w;
+        //     fittedSize.height = height * ratio;
+        //   } else if (width === height) {
+        //     fittedSize.width = w;
+        //     fittedSize.height = w;
+        //   }
+        //   if (areaWidth < areaHeight || areaWidth === areaHeight) {
+        //     if (width < height) {
+        //       if (fittedSize.height < areaHeight) {
+        //         scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+        //       } else {
+        //         scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+        //       }
+        //     } else {
+        //       scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+        //     }
+        //   }
+        //   scale = scale < 1 ? 1 : scale;
+        //   this.setState(
+        //     prevState => ({
+        //       ...prevState,
+        //       srcSize,
+        //       fittedSize,
+        //       minScale: scale,
+        //       loading: false,
+        //     }),
+        //     () => {
+        //       const { positionX, positionY } = this.state;
+        //       setCropperParams({
+        //         positionX,
+        //         positionY,
+        //         scale,
+        //         srcSize,
+        //         fittedSize,
+        //       });
+        //     },
+        //   );
+        // }
         _this.handleMove = function (_a) {
             var positionX = _a.positionX, positionY = _a.positionY, scale = _a.scale;
             var setCropperParams = _this.props.setCropperParams;
@@ -154,55 +263,6 @@ var ImageCropper = /** @class */ (function (_super) {
         if (imageUri && prevProps.imageUri !== imageUri) {
             this.init();
         }
-    };
-    ImageCropper.prototype.getSizeVideo = function (_a) {
-        var _this = this;
-        var _b = _a.width, width = _b === void 0 ? 0 : _b, _c = _a.height, height = _c === void 0 ? 0 : _c;
-        var _d = this.props, setCropperParams = _d.setCropperParams, cropAreaWidth = _d.cropAreaWidth, cropAreaHeight = _d.cropAreaHeight;
-        var areaWidth = cropAreaWidth;
-        var areaHeight = cropAreaHeight;
-        var srcSize = { width: width, height: height };
-        var fittedSize = { width: 0, height: 0 };
-        var scale = 1;
-        if (width > height) {
-            var ratio = w / height;
-            fittedSize.width = width * ratio;
-            fittedSize.height = w;
-        }
-        else if (width < height) {
-            var ratio = w / width;
-            fittedSize.width = w;
-            fittedSize.height = height * ratio;
-        }
-        else if (width === height) {
-            fittedSize.width = w;
-            fittedSize.height = w;
-        }
-        if (areaWidth < areaHeight || areaWidth === areaHeight) {
-            if (width < height) {
-                if (fittedSize.height < areaHeight) {
-                    scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
-                }
-                else {
-                    scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
-                }
-            }
-            else {
-                scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
-            }
-        }
-        scale = scale < 1 ? 1 : scale;
-        this.setState(function (prevState) { return (__assign(__assign({}, prevState), { srcSize: srcSize,
-            fittedSize: fittedSize, minScale: scale, loading: false })); }, function () {
-            var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY;
-            setCropperParams({
-                positionX: positionX,
-                positionY: positionY,
-                scale: scale,
-                srcSize: srcSize,
-                fittedSize: fittedSize,
-            });
-        });
     };
     ImageCropper.prototype.render = function () {
         var _a = this.state, loading = _a.loading, fittedSize = _a.fittedSize, minScale = _a.minScale;
