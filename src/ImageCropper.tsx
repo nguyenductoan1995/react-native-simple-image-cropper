@@ -21,6 +21,7 @@ interface IProps {
   areaColor?: string;
   areaOverlay?: ReactNode;
   setCropperParams: (params: ICropperParams) => void;
+  renderVideo?: any
 }
 
 export interface IState {
@@ -332,6 +333,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
       containerColor,
       areaColor,
       areaOverlay,
+      renderVideo
     } = this.props;
 
     const areaWidth = cropAreaWidth!;
@@ -352,6 +354,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
         containerColor={containerColor}
         imageBackdropColor={areaColor}
         overlay={areaOverlay}
+        renderVideo={renderVideo}
       />
     ) : null;
   }

@@ -206,12 +206,12 @@ var ImageCropper = /** @class */ (function (_super) {
     };
     ImageCropper.prototype.render = function () {
         var _a = this.state, loading = _a.loading, fittedSize = _a.fittedSize, minScale = _a.minScale;
-        var _b = this.props, imageUri = _b.imageUri, cropAreaWidth = _b.cropAreaWidth, cropAreaHeight = _b.cropAreaHeight, containerColor = _b.containerColor, areaColor = _b.areaColor, areaOverlay = _b.areaOverlay;
+        var _b = this.props, imageUri = _b.imageUri, cropAreaWidth = _b.cropAreaWidth, cropAreaHeight = _b.cropAreaHeight, containerColor = _b.containerColor, areaColor = _b.areaColor, areaOverlay = _b.areaOverlay, renderVideo = _b.renderVideo;
         var areaWidth = cropAreaWidth;
         var areaHeight = cropAreaHeight;
         var imageWidth = fittedSize.width;
         var imageHeight = fittedSize.height;
-        return !loading ? (react_1.default.createElement(ImageViewer_1.default, { image: imageUri, areaWidth: areaWidth, areaHeight: areaHeight, imageWidth: imageWidth, imageHeight: imageHeight, minScale: minScale, onMove: this.handleMove, containerColor: containerColor, imageBackdropColor: areaColor, overlay: areaOverlay })) : null;
+        return !loading ? (react_1.default.createElement(ImageViewer_1.default, { image: imageUri, areaWidth: areaWidth, areaHeight: areaHeight, imageWidth: imageWidth, imageHeight: imageHeight, minScale: minScale, onMove: this.handleMove, containerColor: containerColor, imageBackdropColor: areaColor, overlay: areaOverlay, renderVideo: renderVideo })) : null;
     };
     ImageCropper.crop = function (params) {
         var positionX = params.positionX, positionY = params.positionY, scale = params.scale, srcSize = params.srcSize, fittedSize = params.fittedSize, cropSize = params.cropSize, cropAreaSize = params.cropAreaSize, imageUri = params.imageUri;

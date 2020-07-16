@@ -8,6 +8,7 @@ interface IProps {
     areaColor?: string;
     areaOverlay?: ReactNode;
     setCropperParams: (params: ICropperParams) => void;
+    renderVideo?: any;
 }
 export interface IState {
     positionX: number;
