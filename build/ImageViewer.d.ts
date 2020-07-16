@@ -13,6 +13,7 @@ interface IProps {
     containerColor?: string;
     imageBackdropColor?: string;
     overlay?: ReactNode;
+    renderVideo?: any;
 }
 declare class ImageViewer extends Component<IProps> {
     pinchRef: RefObject<PinchGestureHandler>;

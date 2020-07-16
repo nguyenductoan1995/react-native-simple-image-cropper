@@ -21,6 +21,7 @@ interface IProps {
   containerColor?: string;
   imageBackdropColor?: string;
   overlay?: ReactNode;
+  renderVideo? : any
 }
 
 const defaultProps = {
@@ -347,19 +348,20 @@ class ImageViewer extends Component<IProps> {
 
   render() {
     const {
-      // image,
-      // imageWidth,
-      // imageHeight,
+      image,
+      imageWidth,
+      imageHeight,
       areaWidth,
       areaHeight,
       containerColor,
       imageBackdropColor,
       overlay,
+      renderVideo,
     } = this.props;
 
-    // const imageSrc = {
-    //   uri: image,
-    // };
+    const imageSrc = {
+      uri: image,
+    };
 
     const containerStyles = [
       styles.panGestureInner,
@@ -384,24 +386,24 @@ class ImageViewer extends Component<IProps> {
 
     const imageWrapperStyles = [styles.imageWrapper, areaStyles];
 
-    // const imageStyles = [
-    //   styles.image,
-    //   {
-    //     width: imageWidth,
-    //     height: imageHeight,
-    //     transform: [
-    //       {
-    //         scale: this.scale,
-    //       },
-    //       {
-    //         translateX: this.translateX,
-    //       },
-    //       {
-    //         translateY: this.translateY,
-    //       },
-    //     ],
-    //   },
-    // ];
+    const imageStyles = [
+      styles.image,
+      {
+        width: imageWidth,
+        height: imageHeight,
+        transform: [
+          {
+            scale: this.scale,
+          },
+          {
+            translateX: this.translateX,
+          },
+          {
+            translateY: this.translateY,
+          },
+        ],
+      },
+    ];
 
     return (
       <>
@@ -441,7 +443,9 @@ class ImageViewer extends Component<IProps> {
                       <View style={overlayContainerStyle}>{overlay}</View>
                     )}
                   </Animated.View> */}
-                  <Animated.View style={{width:100, height:100, backgroundColor: 'red'}}  />
+                  <Animated.View style={imageStyles}  >
+                      {renderVideo({imageStyles, imageSrc})}
+                  </Animated.View>
                     {overlay && (
                       <View style={overlayContainerStyle}>{overlay}</View>
                     )}

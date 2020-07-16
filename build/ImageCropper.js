@@ -155,6 +155,55 @@ var ImageCropper = /** @class */ (function (_super) {
             this.init();
         }
     };
+    ImageCropper.prototype.getSizeVideo = function (_a) {
+        var _this = this;
+        var _b = _a.width, width = _b === void 0 ? 0 : _b, _c = _a.height, height = _c === void 0 ? 0 : _c;
+        var _d = this.props, setCropperParams = _d.setCropperParams, cropAreaWidth = _d.cropAreaWidth, cropAreaHeight = _d.cropAreaHeight;
+        var areaWidth = cropAreaWidth;
+        var areaHeight = cropAreaHeight;
+        var srcSize = { width: width, height: height };
+        var fittedSize = { width: 0, height: 0 };
+        var scale = 1;
+        if (width > height) {
+            var ratio = w / height;
+            fittedSize.width = width * ratio;
+            fittedSize.height = w;
+        }
+        else if (width < height) {
+            var ratio = w / width;
+            fittedSize.width = w;
+            fittedSize.height = height * ratio;
+        }
+        else if (width === height) {
+            fittedSize.width = w;
+            fittedSize.height = w;
+        }
+        if (areaWidth < areaHeight || areaWidth === areaHeight) {
+            if (width < height) {
+                if (fittedSize.height < areaHeight) {
+                    scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+                }
+                else {
+                    scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+                }
+            }
+            else {
+                scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+            }
+        }
+        scale = scale < 1 ? 1 : scale;
+        this.setState(function (prevState) { return (__assign(__assign({}, prevState), { srcSize: srcSize,
+            fittedSize: fittedSize, minScale: scale, loading: false })); }, function () {
+            var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY;
+            setCropperParams({
+                positionX: positionX,
+                positionY: positionY,
+                scale: scale,
+                srcSize: srcSize,
+                fittedSize: fittedSize,
+            });
+        });
+    };
     ImageCropper.prototype.render = function () {
         var _a = this.state, loading = _a.loading, fittedSize = _a.fittedSize, minScale = _a.minScale;
         var _b = this.props, imageUri = _b.imageUri, cropAreaWidth = _b.cropAreaWidth, cropAreaHeight = _b.cropAreaHeight, containerColor = _b.containerColor, areaColor = _b.areaColor, areaOverlay = _b.areaOverlay;
