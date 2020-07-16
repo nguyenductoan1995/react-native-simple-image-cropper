@@ -441,7 +441,7 @@ class ImageViewer extends Component<IProps> {
                       <View style={overlayContainerStyle}>{overlay}</View>
                     )}
                   </Animated.View> */}
-                  <Animated.View style={{width:100, height:100}}  />
+                  <Animated.View style={{width:100, height:100, backgroundColor: 'red'}}  />
                     {overlay && (
                       <View style={overlayContainerStyle}>{overlay}</View>
                     )}
