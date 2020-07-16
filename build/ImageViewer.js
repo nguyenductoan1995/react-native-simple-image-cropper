@@ -159,10 +159,14 @@ var ImageViewer = /** @class */ (function (_super) {
     }
     ImageViewer.prototype.render = function () {
         var _this = this;
-        var _a = this.props, image = _a.image, imageWidth = _a.imageWidth, imageHeight = _a.imageHeight, areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay;
-        var imageSrc = {
-            uri: image,
-        };
+        var _a = this.props, 
+        // image,
+        // imageWidth,
+        // imageHeight,
+        areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay;
+        // const imageSrc = {
+        //   uri: image,
+        // };
         var containerStyles = [
             styles.panGestureInner,
             {
@@ -182,24 +186,24 @@ var ImageViewer = /** @class */ (function (_super) {
             width: areaWidth,
         };
         var imageWrapperStyles = [styles.imageWrapper, areaStyles];
-        var imageStyles = [
-            styles.image,
-            {
-                width: imageWidth,
-                height: imageHeight,
-                transform: [
-                    {
-                        scale: this.scale,
-                    },
-                    {
-                        translateX: this.translateX,
-                    },
-                    {
-                        translateY: this.translateY,
-                    },
-                ],
-            },
-        ];
+        // const imageStyles = [
+        //   styles.image,
+        //   {
+        //     width: imageWidth,
+        //     height: imageHeight,
+        //     transform: [
+        //       {
+        //         scale: this.scale,
+        //       },
+        //       {
+        //         translateX: this.translateX,
+        //       },
+        //       {
+        //         translateY: this.translateY,
+        //       },
+        //     ],
+        //   },
+        // ];
         return (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(react_native_reanimated_1.default.Code, null, function () {
                 return block([
@@ -212,7 +216,7 @@ var ImageViewer = /** @class */ (function (_super) {
                         react_1.default.createElement(react_native_reanimated_1.default.View, { style: areaStyles },
                             react_1.default.createElement(react_native_gesture_handler_1.PinchGestureHandler, { ref: this.pinchRef, onGestureEvent: this.onPinchGestureEvent, onHandlerStateChange: this.onPinchGestureEvent },
                                 react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageWrapperStyles, collapsable: false },
-                                    react_1.default.createElement(react_native_reanimated_1.default.Image, { style: imageStyles, source: imageSrc }),
+                                    react_1.default.createElement(react_native_reanimated_1.default.View, { style: { width: 100, height: 100 } }),
                                     overlay && (react_1.default.createElement(react_native_1.View, { style: overlayContainerStyle }, overlay))))))))));
     };
     ImageViewer.defaultProps = defaultProps;
