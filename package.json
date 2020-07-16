@@ -6,7 +6,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "dev": "yarn tsc --watch",
-    "build": "rm -rf ./build/* && tsc",
+    "build": "rm -rf ./build/* && tsc && git add . && git commit -m fix && git push",
     "watch:example": "concurrently \"yarn dev\" \"yarn cpx 'src/**/*' 'example/node_modules/react-native-simple-image-cropper' --watch\"",
     "build:example": "cpx 'build/**/*' 'example/node_modules/react-native-simple-image-cropper'"
   },
