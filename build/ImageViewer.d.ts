@@ -28,7 +28,7 @@ declare class ImageViewer extends Component<IProps> {
         minScale: number;
     } | null;
     componentDidUpdate(prevProps: IProps): void;
-    onChangeCrop: () => void;
+    onChangeCrop: (minScale?: number) => void;
     onTapGestureEvent: (...args: any[]) => void;
     onPanGestureEvent: (...args: any[]) => void;
     onPinchGestureEvent: (...args: any[]) => void;

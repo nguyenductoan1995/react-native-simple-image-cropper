@@ -90,12 +90,13 @@ class ImageViewer extends Component<IProps> {
   componentDidUpdate(prevProps: IProps) {
     const { minScale } = this.props;
     if (minScale && prevProps.minScale !== minScale) {
-      this.onChangeCrop();
+      this.onChangeCrop(minScale);
     }
   }
 
-  onChangeCrop = () =>{
-    this.scale.setValue(1.5)
+  onChangeCrop = (minScale= 0) =>{
+    alert(minScale)
+    this.scale.setValue(minScale)
   }
 
   onTapGestureEvent: (...args: any[]) => void;

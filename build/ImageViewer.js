@@ -54,8 +54,10 @@ var ImageViewer = /** @class */ (function (_super) {
     __extends(ImageViewer, _super);
     function ImageViewer(props) {
         var _this = _super.call(this, props) || this;
-        _this.onChangeCrop = function () {
-            _this.scale.setValue(1.5);
+        _this.onChangeCrop = function (minScale) {
+            if (minScale === void 0) { minScale = 0; }
+            alert(minScale);
+            _this.scale.setValue(minScale);
         };
         _this.handleMove = function (args) {
             var onMove = _this.props.onMove;
@@ -171,7 +173,7 @@ var ImageViewer = /** @class */ (function (_super) {
     ImageViewer.prototype.componentDidUpdate = function (prevProps) {
         var minScale = this.props.minScale;
         if (minScale && prevProps.minScale !== minScale) {
-            this.onChangeCrop();
+            this.onChangeCrop(minScale);
         }
     };
     ImageViewer.prototype.render = function () {
