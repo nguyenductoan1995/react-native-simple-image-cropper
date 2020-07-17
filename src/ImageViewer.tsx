@@ -99,7 +99,6 @@ class ImageViewer extends Component<IProps, IState> {
   }
 
   onChangeCrop = (minScale= 0) =>{
-    alert(minScale)
     this.scale.setValue(minScale)
   }
 

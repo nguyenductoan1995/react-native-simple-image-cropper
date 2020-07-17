@@ -59,7 +59,6 @@ var ImageViewer = /** @class */ (function (_super) {
         };
         _this.onChangeCrop = function (minScale) {
             if (minScale === void 0) { minScale = 0; }
-            alert(minScale);
             _this.scale.setValue(minScale);
         };
         _this.handleMove = function (args) {
