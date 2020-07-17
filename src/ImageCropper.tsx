@@ -20,7 +20,7 @@ import {
 interface IProps {
   imageUri: string;
   cropAreaWidth?: number;
-  cropAreaHeight?: number;
+  cropAreaHeight: number;
   containerColor?: string;
   areaColor?: string;
   areaOverlay?: ReactNode;
@@ -192,8 +192,29 @@ class ImageCropper extends PureComponent<IProps, IState> {
 
   onChangeCropSize = (newCrop= 0) =>{
     
-    const { cropAreaHeight } = this.props;
-    alert(`${newCrop}-${cropAreaHeight}`)
+    const { cropAreaHeight,setCropperParams } = this.props;
+   // alert(`${newCrop}-${cropAreaHeight}`)
+   
+    const scale = cropAreaHeight / newCrop
+  
+    this.setState(
+      prevState => ({
+        ...prevState,
+        minScale: scale,
+        loading: false,
+      }),
+      () => {
+        const { positionX, positionY, srcSize, fittedSize } = this.state;
+
+        setCropperParams({
+          positionX,
+          positionY,
+          scale,
+          srcSize,
+          fittedSize,
+        });
+      },
+    );
   }
 
   init = () => {

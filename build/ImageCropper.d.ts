@@ -3,7 +3,7 @@ import { ICropperParams, ICropParams, IImageViewerData, ISizeData } from './type
 interface IProps {
     imageUri: string;
     cropAreaWidth?: number;
-    cropAreaHeight?: number;
+    cropAreaHeight: number;
     containerColor?: string;
     areaColor?: string;
     areaOverlay?: ReactNode;
@@ -37,7 +37,7 @@ declare class ImageCropper extends PureComponent<IProps, IState> {
         loading: boolean;
         cropAreaHeight?: undefined;
     } | {
-        cropAreaHeight: number | undefined;
+        cropAreaHeight: number;
         prevImageUri?: undefined;
         loading?: undefined;
     } | null;

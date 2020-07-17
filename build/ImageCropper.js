@@ -74,8 +74,19 @@ var ImageCropper = /** @class */ (function (_super) {
         };
         _this.onChangeCropSize = function (newCrop) {
             if (newCrop === void 0) { newCrop = 0; }
-            var cropAreaHeight = _this.props.cropAreaHeight;
-            alert(newCrop + "-" + cropAreaHeight);
+            var _a = _this.props, cropAreaHeight = _a.cropAreaHeight, setCropperParams = _a.setCropperParams;
+            // alert(`${newCrop}-${cropAreaHeight}`)
+            var scale = cropAreaHeight / newCrop;
+            _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { minScale: scale, loading: false })); }, function () {
+                var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY, srcSize = _a.srcSize, fittedSize = _a.fittedSize;
+                setCropperParams({
+                    positionX: positionX,
+                    positionY: positionY,
+                    scale: scale,
+                    srcSize: srcSize,
+                    fittedSize: fittedSize,
+                });
+            });
         };
         _this.init = function () {
             var _a = _this.props, imageUri = _a.imageUri, getSize = _a.getSize;
