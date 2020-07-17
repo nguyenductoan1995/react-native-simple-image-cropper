@@ -19,6 +19,9 @@ export interface IState {
     minScale: number;
 }
 declare class ImageViewer extends Component<IProps, IState> {
+    state: {
+        minScale: number;
+    };
     pinchRef: RefObject<PinchGestureHandler>;
     dragRef: RefObject<PanGestureHandler>;
     translateX: Animated.Value<number>;

@@ -68,6 +68,10 @@ export interface IState {
 }
 
 class ImageViewer extends Component<IProps, IState> {
+
+  state={
+    minScale:1
+  }
   pinchRef: RefObject<PinchGestureHandler>;
 
   dragRef: RefObject<PanGestureHandler>;

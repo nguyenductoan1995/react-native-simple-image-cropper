@@ -54,6 +54,9 @@ var ImageViewer = /** @class */ (function (_super) {
     __extends(ImageViewer, _super);
     function ImageViewer(props) {
         var _this = _super.call(this, props) || this;
+        _this.state = {
+            minScale: 1
+        };
         _this.onChangeCrop = function (minScale) {
             if (minScale === void 0) { minScale = 0; }
             alert(minScale);
