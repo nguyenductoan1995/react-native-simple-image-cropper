@@ -2,7 +2,7 @@ import { PureComponent, ReactNode } from 'react';
 import { ICropperParams, ICropParams, IImageViewerData, ISizeData } from './types';
 interface IProps {
     imageUri: string;
-    cropAreaWidth?: number;
+    cropAreaWidth: number;
     cropAreaHeight: number;
     containerColor?: string;
     areaColor?: string;

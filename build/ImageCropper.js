@@ -74,9 +74,9 @@ var ImageCropper = /** @class */ (function (_super) {
         };
         _this.onChangeCropSize = function (newCrop) {
             if (newCrop === void 0) { newCrop = 0; }
-            var setCropperParams = _this.props.setCropperParams;
+            var _a = _this.props, setCropperParams = _a.setCropperParams, cropAreaWidth = _a.cropAreaWidth;
             var fittedSize = _this.state.fittedSize;
-            var scale = fittedSize.width / newCrop;
+            var scale = newCrop >= cropAreaWidth ? newCrop / fittedSize.width : fittedSize.width / newCrop;
             //   alert(scale)
             _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { minScale: scale, loading: false })); }, function () {
                 var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY, srcSize = _a.srcSize, fittedSize = _a.fittedSize;
