@@ -196,6 +196,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
    // alert(`${newCrop}-${cropAreaHeight}`)
    
     const scale = cropAreaHeight / newCrop
+    alert(scale)
   
     this.setState(
       prevState => ({
