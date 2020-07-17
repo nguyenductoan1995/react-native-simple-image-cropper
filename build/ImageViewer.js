@@ -58,7 +58,7 @@ var ImageViewer = /** @class */ (function (_super) {
             var onMove = _this.props.onMove;
             var positionX = args[0];
             var positionY = args[1];
-            var scale = args[2];
+            var scale = args[1];
             onMove({ positionX: positionX, positionY: positionY, scale: scale });
         };
         var areaWidth = props.areaWidth, areaHeight = props.areaHeight, imageWidth = props.imageWidth, imageHeight = props.imageHeight, minScale = props.minScale;
