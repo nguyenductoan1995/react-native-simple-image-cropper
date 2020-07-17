@@ -82,7 +82,7 @@ var ImageCropper = /** @class */ (function (_super) {
                 var fittedSize = { width: 0, height: 0 };
                 var scale = 1;
                 if (width > height) {
-                    var ratio = w / height;
+                    var ratio = w / width;
                     fittedSize.width = width * ratio;
                     fittedSize.height = w;
                 }

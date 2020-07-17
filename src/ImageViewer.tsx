@@ -341,7 +341,7 @@ class ImageViewer extends Component<IProps> {
 
     const positionX = args[0];
     const positionY = args[1];
-    const scale = args[1];
+    const scale = args[2];
 
     onMove({ positionX, positionY, scale });
   };
