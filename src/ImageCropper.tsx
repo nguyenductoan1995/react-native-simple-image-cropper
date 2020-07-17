@@ -192,31 +192,31 @@ class ImageCropper extends PureComponent<IProps, IState> {
 
   onChangeCropSize = (newCrop= 0) =>{
     
-  //   const { setCropperParams } = this.props;
-  //   const { fittedSize } = this.state;
+     const { setCropperParams } = this.props;
+    const { fittedSize } = this.state;
   alert(`${newCrop}`)
    
-  //   const scale =  newCrop/fittedSize.height
+     const scale =  newCrop/fittedSize.height
   //   alert(scale)
   
-  //   this.setState(
-  //     prevState => ({
-  //       ...prevState,
-  //       minScale: scale,
-  //       loading: false,
-  //     }),
-  //     () => {
-  //       const { positionX, positionY, srcSize, fittedSize } = this.state;
+    this.setState(
+      prevState => ({
+        ...prevState,
+        minScale: scale,
+        loading: false,
+      }),
+      () => {
+        const { positionX, positionY, srcSize, fittedSize } = this.state;
 
-  //       setCropperParams({
-  //         positionX,
-  //         positionY,
-  //         scale,
-  //         srcSize,
-  //         fittedSize,
-  //       });
-  //     },
-  //   );
+        setCropperParams({
+          positionX,
+          positionY,
+          scale,
+          srcSize,
+          fittedSize,
+        });
+      },
+    );
   }
 
   init = () => {
