@@ -195,7 +195,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
      const { setCropperParams,cropAreaWidth } = this.props;
     const { fittedSize } = this.state;
 
-     const scale = newCrop >= cropAreaWidth ? newCrop/fittedSize.width:w/fittedSize.width
+     const scale = newCrop < cropAreaWidth ? newCrop/fittedSize.width:w/fittedSize.width
   //   alert(scale)
   
     this.setState(
