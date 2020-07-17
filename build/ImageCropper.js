@@ -98,14 +98,14 @@ var ImageCropper = /** @class */ (function (_super) {
                 if (areaWidth < areaHeight || areaWidth === areaHeight) {
                     if (width < height) {
                         if (fittedSize.height < areaHeight) {
-                            scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+                            scale = (areaHeight / fittedSize.height);
                         }
                         else {
-                            scale = Math.ceil((areaWidth / fittedSize.width) * 10) / 10;
+                            scale = (areaWidth / fittedSize.width);
                         }
                     }
                     else {
-                        scale = Math.ceil((areaHeight / fittedSize.height) * 10) / 10;
+                        scale = (areaHeight / fittedSize.height);
                     }
                 }
                 scale = scale < 1 ? 1 : scale;
