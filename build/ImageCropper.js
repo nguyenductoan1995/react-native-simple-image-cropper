@@ -296,7 +296,7 @@ var ImageCropper = /** @class */ (function (_super) {
             this.init();
         }
         if (prevProps.cropAreaHeight !== cropAreaHeight) {
-            this.onChangeCropSize(prevProps.cropAreaHeight);
+            this.onChangeCropSize(cropAreaHeight);
         }
     };
     ImageCropper.prototype.render = function () {

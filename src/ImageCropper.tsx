@@ -186,7 +186,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
       this.init();
     }
     if(prevProps.cropAreaHeight !== cropAreaHeight ) {
-      this.onChangeCropSize(prevProps.cropAreaHeight)
+      this.onChangeCropSize(cropAreaHeight)
     }
   }
 
