@@ -74,21 +74,8 @@ var ImageCropper = /** @class */ (function (_super) {
         };
         _this.onChangeCropSize = function (newCrop) {
             if (newCrop === void 0) { newCrop = 0; }
-            alert(newCrop);
-            var _a = _this.props, cropAreaWidth = _a.cropAreaWidth, cropAreaHeight = _a.cropAreaHeight;
-            var areaWidth = cropAreaWidth;
-            var areaHeight = cropAreaHeight;
-            if (areaWidth < areaHeight || areaWidth === areaHeight) {
-                // if (width < height) {
-                //   if (fittedSize.height < areaHeight) {
-                //     scale =(areaHeight / fittedSize.height) ;
-                //   } else {
-                //     scale = (areaWidth / fittedSize.width);
-                //   }
-                // } else {
-                //   scale = (areaHeight / fittedSize.height) 
-                // }
-            }
+            var cropAreaHeight = _this.props.cropAreaHeight;
+            alert(newCrop + "-" + cropAreaHeight);
         };
         _this.init = function () {
             var _a = _this.props, imageUri = _a.imageUri, getSize = _a.getSize;

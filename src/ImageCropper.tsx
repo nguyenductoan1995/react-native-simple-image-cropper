@@ -191,21 +191,9 @@ class ImageCropper extends PureComponent<IProps, IState> {
   }
 
   onChangeCropSize = (newCrop= 0) =>{
-    alert(newCrop)
-    const {  cropAreaWidth, cropAreaHeight } = this.props;
-    const areaWidth = cropAreaWidth!;
-    const areaHeight = cropAreaHeight!;
-    if (areaWidth < areaHeight || areaWidth === areaHeight) {
-      // if (width < height) {
-      //   if (fittedSize.height < areaHeight) {
-      //     scale =(areaHeight / fittedSize.height) ;
-      //   } else {
-      //     scale = (areaWidth / fittedSize.width);
-      //   }
-      // } else {
-      //   scale = (areaHeight / fittedSize.height) 
-      // }
-    }
+    
+    const { cropAreaHeight } = this.props;
+    alert(`${newCrop}-${cropAreaHeight}`)
   }
 
   init = () => {
