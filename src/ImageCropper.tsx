@@ -247,15 +247,15 @@ class ImageCropper extends PureComponent<IProps, IState> {
         }
 
         if (areaWidth < areaHeight || areaWidth === areaHeight) {
-          if (width < height) {
-            if (fittedSize.height < areaHeight) {
-              scale =(areaHeight / fittedSize.height) ;
-            } else {
-              scale = (areaWidth / fittedSize.width);
-            }
-          } else {
-            scale = (areaHeight / fittedSize.height) 
-          }
+          // if (width < height) {
+          //   if (fittedSize.height < areaHeight) {
+          //     scale =(areaHeight / fittedSize.height) ;
+          //   } else {
+          //     scale = (areaWidth / fittedSize.width);
+          //   }
+          // } else {
+          //   scale = (areaHeight / fittedSize.height) 
+          // }
         }
 
         scale = scale < 1 ? 1 : scale;
