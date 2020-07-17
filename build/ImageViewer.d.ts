@@ -15,12 +15,20 @@ interface IProps {
     overlay?: ReactNode;
     renderVideo?: any;
 }
+export interface IState {
+    minScale: number;
+}
 declare class ImageViewer extends Component<IProps> {
     pinchRef: RefObject<PinchGestureHandler>;
     dragRef: RefObject<PanGestureHandler>;
     translateX: Animated.Value<number>;
     translateY: Animated.Value<number>;
     scale: Animated.Value<number>;
+    static getDerivedStateFromProps(props: IProps, state: IState): {
+        minScale: number;
+    } | null;
+    componentDidUpdate(prevProps: IProps): void;
+    onChangeCrop: () => void;
     onTapGestureEvent: (...args: any[]) => void;
     onPanGestureEvent: (...args: any[]) => void;
     onPinchGestureEvent: (...args: any[]) => void;

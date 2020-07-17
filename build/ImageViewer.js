@@ -54,6 +54,9 @@ var ImageViewer = /** @class */ (function (_super) {
     __extends(ImageViewer, _super);
     function ImageViewer(props) {
         var _this = _super.call(this, props) || this;
+        _this.onChangeCrop = function () {
+            _this.scale.setValue(1.5);
+        };
         _this.handleMove = function (args) {
             var onMove = _this.props.onMove;
             var positionX = args[0];
@@ -157,6 +160,20 @@ var ImageViewer = /** @class */ (function (_super) {
         ]);
         return _this;
     }
+    ImageViewer.getDerivedStateFromProps = function (props, state) {
+        if (props.minScale !== state.minScale) {
+            return {
+                minScale: props.minScale,
+            };
+        }
+        return null;
+    };
+    ImageViewer.prototype.componentDidUpdate = function (prevProps) {
+        var minScale = this.props.minScale;
+        if (minScale && prevProps.minScale !== minScale) {
+            this.onChangeCrop();
+        }
+    };
     ImageViewer.prototype.render = function () {
         var _this = this;
         var _a = this.props, image = _a.image, imageWidth = _a.imageWidth, imageHeight = _a.imageHeight, areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay, renderVideo = _a.renderVideo;

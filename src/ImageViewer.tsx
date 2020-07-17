@@ -63,6 +63,10 @@ const styles = StyleSheet.create({
   image: {},
 });
 
+export interface IState {
+  minScale: number;
+}
+
 class ImageViewer extends Component<IProps> {
   pinchRef: RefObject<PinchGestureHandler>;
 
@@ -73,6 +77,26 @@ class ImageViewer extends Component<IProps> {
   translateY: Animated.Value<number>;
 
   scale: Animated.Value<number>;
+
+  static getDerivedStateFromProps(props: IProps, state: IState) {
+    if (props.minScale !== state.minScale) {
+      return {
+        minScale: props.minScale,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps: IProps) {
+    const { minScale } = this.props;
+    if (minScale && prevProps.minScale !== minScale) {
+      this.onChangeCrop();
+    }
+  }
+
+  onChangeCrop = () =>{
+    this.scale.setValue(1.5)
+  }
 
   onTapGestureEvent: (...args: any[]) => void;
 
