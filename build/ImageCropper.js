@@ -81,20 +81,18 @@ var ImageCropper = /** @class */ (function (_super) {
                 var srcSize = { width: width, height: height };
                 var fittedSize = { width: 0, height: 0 };
                 var scale = 1;
-                if (width > height) {
-                    var ratio = w / height;
-                    fittedSize.width = width * ratio;
-                    fittedSize.height = w;
-                }
-                else if (width < height) {
-                    var ratio = w / width;
-                    fittedSize.width = w;
-                    fittedSize.height = height * ratio;
-                }
-                else if (width === height) {
-                    fittedSize.width = w;
-                    fittedSize.height = w;
-                }
+                // if (width > height) {
+                var ratio = w / width;
+                fittedSize.width = width * ratio;
+                fittedSize.height = height * ratio;
+                // } else if (width < height) {
+                //   const ratio = w / width;
+                //   fittedSize.width = w;
+                //   fittedSize.height = height * ratio;
+                // } else if (width === height) {
+                //   fittedSize.width = w;
+                //   fittedSize.height = w;
+                // }
                 if (areaWidth < areaHeight || areaWidth === areaHeight) {
                     if (width < height) {
                         if (fittedSize.height < areaHeight) {
