@@ -40,6 +40,7 @@ export interface IState {
   height: number;
   loading: boolean;
   prevImageUri: string;
+  cropAreaHeight: number;
 }
 
 const window = Dimensions.get('window');
@@ -146,6 +147,11 @@ class ImageCropper extends PureComponent<IProps, IState> {
         loading: true,
       };
     }
+    if(props.cropAreaHeight !=state.cropAreaHeight) {
+      return {
+        cropAreaHeight: props.cropAreaHeight
+      }
+    }
 
     return null;
   }
@@ -167,6 +173,7 @@ class ImageCropper extends PureComponent<IProps, IState> {
       height: 0,
     },
     prevImageUri: '',
+    cropAreaHeight: 0,
   };
 
   componentDidMount() {
@@ -174,9 +181,30 @@ class ImageCropper extends PureComponent<IProps, IState> {
   }
 
   componentDidUpdate(prevProps: IProps) {
-    const { imageUri } = this.props;
+    const { imageUri,cropAreaHeight } = this.props;
     if (imageUri && prevProps.imageUri !== imageUri) {
       this.init();
+    }
+    if(prevProps.cropAreaHeight !== cropAreaHeight ) {
+      this.onChangeCropSize(prevProps.cropAreaHeight)
+    }
+  }
+
+  onChangeCropSize = (newCrop= 0) =>{
+    alert(newCrop)
+    const {  cropAreaWidth, cropAreaHeight } = this.props;
+    const areaWidth = cropAreaWidth!;
+    const areaHeight = cropAreaHeight!;
+    if (areaWidth < areaHeight || areaWidth === areaHeight) {
+      // if (width < height) {
+      //   if (fittedSize.height < areaHeight) {
+      //     scale =(areaHeight / fittedSize.height) ;
+      //   } else {
+      //     scale = (areaWidth / fittedSize.width);
+      //   }
+      // } else {
+      //   scale = (areaHeight / fittedSize.height) 
+      // }
     }
   }
 

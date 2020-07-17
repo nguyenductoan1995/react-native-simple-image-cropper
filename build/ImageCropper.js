@@ -70,6 +70,25 @@ var ImageCropper = /** @class */ (function (_super) {
                 height: 0,
             },
             prevImageUri: '',
+            cropAreaHeight: 0,
+        };
+        _this.onChangeCropSize = function (newCrop) {
+            if (newCrop === void 0) { newCrop = 0; }
+            alert(newCrop);
+            var _a = _this.props, cropAreaWidth = _a.cropAreaWidth, cropAreaHeight = _a.cropAreaHeight;
+            var areaWidth = cropAreaWidth;
+            var areaHeight = cropAreaHeight;
+            if (areaWidth < areaHeight || areaWidth === areaHeight) {
+                // if (width < height) {
+                //   if (fittedSize.height < areaHeight) {
+                //     scale =(areaHeight / fittedSize.height) ;
+                //   } else {
+                //     scale = (areaWidth / fittedSize.width);
+                //   }
+                // } else {
+                //   scale = (areaHeight / fittedSize.height) 
+                // }
+            }
         };
         _this.init = function () {
             var _a = _this.props, imageUri = _a.imageUri, getSize = _a.getSize;
@@ -252,15 +271,23 @@ var ImageCropper = /** @class */ (function (_super) {
                 loading: true,
             };
         }
+        if (props.cropAreaHeight != state.cropAreaHeight) {
+            return {
+                cropAreaHeight: props.cropAreaHeight
+            };
+        }
         return null;
     };
     ImageCropper.prototype.componentDidMount = function () {
         this.init();
     };
     ImageCropper.prototype.componentDidUpdate = function (prevProps) {
-        var imageUri = this.props.imageUri;
+        var _a = this.props, imageUri = _a.imageUri, cropAreaHeight = _a.cropAreaHeight;
         if (imageUri && prevProps.imageUri !== imageUri) {
             this.init();
+        }
+        if (prevProps.cropAreaHeight !== cropAreaHeight) {
+            this.onChangeCropSize(prevProps.cropAreaHeight);
         }
     };
     ImageCropper.prototype.render = function () {

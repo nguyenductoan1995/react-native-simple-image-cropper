@@ -22,6 +22,7 @@ export interface IState {
     height: number;
     loading: boolean;
     prevImageUri: string;
+    cropAreaHeight: number;
 }
 declare class ImageCropper extends PureComponent<IProps, IState> {
     static crop: (params: ICropParams) => Promise<string | null | undefined>;
@@ -34,6 +35,11 @@ declare class ImageCropper extends PureComponent<IProps, IState> {
     static getDerivedStateFromProps(props: IProps, state: IState): {
         prevImageUri: string;
         loading: boolean;
+        cropAreaHeight?: undefined;
+    } | {
+        cropAreaHeight: number | undefined;
+        prevImageUri?: undefined;
+        loading?: undefined;
     } | null;
     state: {
         positionX: number;
@@ -52,9 +58,11 @@ declare class ImageCropper extends PureComponent<IProps, IState> {
             height: number;
         };
         prevImageUri: string;
+        cropAreaHeight: number;
     };
     componentDidMount(): void;
     componentDidUpdate(prevProps: IProps): void;
+    onChangeCropSize: (newCrop?: number) => void;
     init: () => void;
     handleMove: ({ positionX, positionY, scale }: IImageViewerData) => void;
     render(): JSX.Element | null;
