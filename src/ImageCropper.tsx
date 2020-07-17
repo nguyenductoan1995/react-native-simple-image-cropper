@@ -192,31 +192,31 @@ class ImageCropper extends PureComponent<IProps, IState> {
 
   onChangeCropSize = (newCrop= 0) =>{
     
-    const { setCropperParams } = this.props;
-    const { fittedSize } = this.state;
-   // alert(`${newCrop}-${cropAreaHeight}`)
+  //   const { setCropperParams } = this.props;
+  //   const { fittedSize } = this.state;
+  alert(`${newCrop}`)
    
-    const scale =  newCrop/fittedSize.height
-    alert(scale)
+  //   const scale =  newCrop/fittedSize.height
+  //   alert(scale)
   
-    this.setState(
-      prevState => ({
-        ...prevState,
-        minScale: scale,
-        loading: false,
-      }),
-      () => {
-        const { positionX, positionY, srcSize, fittedSize } = this.state;
+  //   this.setState(
+  //     prevState => ({
+  //       ...prevState,
+  //       minScale: scale,
+  //       loading: false,
+  //     }),
+  //     () => {
+  //       const { positionX, positionY, srcSize, fittedSize } = this.state;
 
-        setCropperParams({
-          positionX,
-          positionY,
-          scale,
-          srcSize,
-          fittedSize,
-        });
-      },
-    );
+  //       setCropperParams({
+  //         positionX,
+  //         positionY,
+  //         scale,
+  //         srcSize,
+  //         fittedSize,
+  //       });
+  //     },
+  //   );
   }
 
   init = () => {
@@ -247,15 +247,15 @@ class ImageCropper extends PureComponent<IProps, IState> {
         }
 
         if (areaWidth < areaHeight || areaWidth === areaHeight) {
-          // if (width < height) {
-          //   if (fittedSize.height < areaHeight) {
-          //     scale =(areaHeight / fittedSize.height) ;
-          //   } else {
-          //     scale = (areaWidth / fittedSize.width);
-          //   }
-          // } else {
-          //   scale = (areaHeight / fittedSize.height) 
-          // }
+          if (width < height) {
+            if (fittedSize.height < areaHeight) {
+              scale =(areaHeight / fittedSize.height) ;
+            } else {
+              scale = (areaWidth / fittedSize.width);
+            }
+          } else {
+            scale = (areaHeight / fittedSize.height) 
+          }
         }
 
         scale = scale < 1 ? 1 : scale;

@@ -74,21 +74,28 @@ var ImageCropper = /** @class */ (function (_super) {
         };
         _this.onChangeCropSize = function (newCrop) {
             if (newCrop === void 0) { newCrop = 0; }
-            var setCropperParams = _this.props.setCropperParams;
-            var fittedSize = _this.state.fittedSize;
-            // alert(`${newCrop}-${cropAreaHeight}`)
-            var scale = newCrop / fittedSize.height;
-            alert(scale);
-            _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { minScale: scale, loading: false })); }, function () {
-                var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY, srcSize = _a.srcSize, fittedSize = _a.fittedSize;
-                setCropperParams({
-                    positionX: positionX,
-                    positionY: positionY,
-                    scale: scale,
-                    srcSize: srcSize,
-                    fittedSize: fittedSize,
-                });
-            });
+            //   const { setCropperParams } = this.props;
+            //   const { fittedSize } = this.state;
+            alert("" + newCrop);
+            //   const scale =  newCrop/fittedSize.height
+            //   alert(scale)
+            //   this.setState(
+            //     prevState => ({
+            //       ...prevState,
+            //       minScale: scale,
+            //       loading: false,
+            //     }),
+            //     () => {
+            //       const { positionX, positionY, srcSize, fittedSize } = this.state;
+            //       setCropperParams({
+            //         positionX,
+            //         positionY,
+            //         scale,
+            //         srcSize,
+            //         fittedSize,
+            //       });
+            //     },
+            //   );
         };
         _this.init = function () {
             var _a = _this.props, imageUri = _a.imageUri, getSize = _a.getSize;
@@ -116,15 +123,17 @@ var ImageCropper = /** @class */ (function (_super) {
                     fittedSize.height = w;
                 }
                 if (areaWidth < areaHeight || areaWidth === areaHeight) {
-                    // if (width < height) {
-                    //   if (fittedSize.height < areaHeight) {
-                    //     scale =(areaHeight / fittedSize.height) ;
-                    //   } else {
-                    //     scale = (areaWidth / fittedSize.width);
-                    //   }
-                    // } else {
-                    //   scale = (areaHeight / fittedSize.height) 
-                    // }
+                    if (width < height) {
+                        if (fittedSize.height < areaHeight) {
+                            scale = (areaHeight / fittedSize.height);
+                        }
+                        else {
+                            scale = (areaWidth / fittedSize.width);
+                        }
+                    }
+                    else {
+                        scale = (areaHeight / fittedSize.height);
+                    }
                 }
                 scale = scale < 1 ? 1 : scale;
                 _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { srcSize: srcSize,
