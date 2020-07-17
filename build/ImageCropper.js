@@ -76,7 +76,7 @@ var ImageCropper = /** @class */ (function (_super) {
             if (newCrop === void 0) { newCrop = 0; }
             var _a = _this.props, setCropperParams = _a.setCropperParams, cropAreaWidth = _a.cropAreaWidth;
             var fittedSize = _this.state.fittedSize;
-            var scale = newCrop < cropAreaWidth ? newCrop / fittedSize.width : w / fittedSize.width;
+            var scale = newCrop >= cropAreaWidth ? newCrop / fittedSize.width : w / fittedSize.width;
             //   alert(scale)
             _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { minScale: scale, loading: false })); }, function () {
                 var _a = _this.state, positionX = _a.positionX, positionY = _a.positionY, srcSize = _a.srcSize, fittedSize = _a.fittedSize;
