@@ -30,12 +30,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var react_native_gesture_handler_1 = require("react-native-gesture-handler");
 var react_native_reanimated_1 = __importStar(require("react-native-reanimated"));
 var react_native_redash_1 = require("react-native-redash");
+var react_native_video_1 = __importDefault(require("react-native-video"));
 var defaultProps = {
     containerColor: 'black',
     imageBackdropColor: 'black',
@@ -180,7 +184,7 @@ var ImageViewer = /** @class */ (function (_super) {
     };
     ImageViewer.prototype.render = function () {
         var _this = this;
-        var _a = this.props, image = _a.image, imageWidth = _a.imageWidth, imageHeight = _a.imageHeight, areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay, renderVideo = _a.renderVideo;
+        var _a = this.props, image = _a.image, imageWidth = _a.imageWidth, imageHeight = _a.imageHeight, areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay;
         var imageSrc = {
             uri: image,
         };
@@ -233,7 +237,8 @@ var ImageViewer = /** @class */ (function (_super) {
                         react_1.default.createElement(react_native_reanimated_1.default.View, { style: areaStyles },
                             react_1.default.createElement(react_native_gesture_handler_1.PinchGestureHandler, { ref: this.pinchRef, onGestureEvent: this.onPinchGestureEvent, onHandlerStateChange: this.onPinchGestureEvent },
                                 react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageWrapperStyles, collapsable: false },
-                                    react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageStyles }, renderVideo({ imageStyles: imageStyles, imageSrc: imageSrc })),
+                                    react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageStyles },
+                                        react_1.default.createElement(react_native_video_1.default, { repeat: true, resizeMode: "contain", source: imageSrc, style: imageStyles })),
                                     overlay && (react_1.default.createElement(react_native_1.View, { style: overlayContainerStyle }, overlay))))))))));
     };
     ImageViewer.defaultProps = defaultProps;

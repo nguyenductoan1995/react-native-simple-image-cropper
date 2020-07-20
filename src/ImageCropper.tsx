@@ -5,7 +5,7 @@ import {
    } from 'react-native';
 import ImageEditor from '@react-native-community/image-editor';
 import ImageViewer from './ImageViewer';
-// import Video from 'react-native-video'
+ 
 import {
   getPercentFromNumber,
   getPercentDiffNumberFromNumber,

@@ -38,7 +38,6 @@ var react_1 = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var image_editor_1 = __importDefault(require("@react-native-community/image-editor"));
 var ImageViewer_1 = __importDefault(require("./ImageViewer"));
-// import Video from 'react-native-video'
 var percentCalculator_1 = require("./helpers/percentCalculator");
 var window = react_native_1.Dimensions.get('window');
 var w = window.width;

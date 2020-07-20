@@ -9,6 +9,7 @@ import {
 import Animated, { Easing } from 'react-native-reanimated';
 import { timing } from 'react-native-redash';
 import { IImageViewerData } from './types';
+import Video from 'react-native-video'
 
 interface IProps {
   image: string;
@@ -384,7 +385,7 @@ class ImageViewer extends Component<IProps, IState> {
       containerColor,
       imageBackdropColor,
       overlay,
-      renderVideo,
+      // renderVideo,
     } = this.props;
 
     const imageSrc = {
@@ -472,7 +473,13 @@ class ImageViewer extends Component<IProps, IState> {
                     )}
                   </Animated.View> */}
                   <Animated.View style={imageStyles}  >
-                      {renderVideo({imageStyles, imageSrc})}
+                    <Video
+                    repeat
+                    resizeMode="contain"
+                    source={imageSrc}
+                      style={imageStyles}
+                    />
+                      {/* {renderVideo({imageStyles, imageSrc})} */}
                   </Animated.View>
                     {overlay && (
                       <View style={overlayContainerStyle}>{overlay}</View>
