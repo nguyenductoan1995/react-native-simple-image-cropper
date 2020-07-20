@@ -477,7 +477,7 @@ class ImageViewer extends Component<IProps, IState> {
                     repeat
                     resizeMode="contain"
                     source={imageSrc}
-                      style={imageStyles}
+                      style={{flex:1}}
                     />
                       {/* {renderVideo({imageStyles, imageSrc})} */}
                   </Animated.View>

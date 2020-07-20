@@ -238,7 +238,7 @@ var ImageViewer = /** @class */ (function (_super) {
                             react_1.default.createElement(react_native_gesture_handler_1.PinchGestureHandler, { ref: this.pinchRef, onGestureEvent: this.onPinchGestureEvent, onHandlerStateChange: this.onPinchGestureEvent },
                                 react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageWrapperStyles, collapsable: false },
                                     react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageStyles },
-                                        react_1.default.createElement(react_native_video_1.default, { repeat: true, resizeMode: "contain", source: imageSrc, style: imageStyles })),
+                                        react_1.default.createElement(react_native_video_1.default, { repeat: true, resizeMode: "contain", source: imageSrc, style: { flex: 1 } })),
                                     overlay && (react_1.default.createElement(react_native_1.View, { style: overlayContainerStyle }, overlay))))))))));
     };
     ImageViewer.defaultProps = defaultProps;
