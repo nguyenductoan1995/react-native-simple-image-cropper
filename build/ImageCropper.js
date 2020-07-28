@@ -126,6 +126,19 @@ var ImageCropper = /** @class */ (function (_super) {
                         scale = (areaHeight / fittedSize.height);
                     }
                 }
+                else {
+                    if (width < height) {
+                        if (fittedSize.height < areaHeight) {
+                            scale = (areaHeight / fittedSize.height);
+                        }
+                        else {
+                            scale = (areaWidth / fittedSize.width);
+                        }
+                    }
+                    else {
+                        scale = (areaHeight / fittedSize.height);
+                    }
+                }
                 scale = scale < 1 ? 1 : scale;
                 _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { srcSize: srcSize,
                     fittedSize: fittedSize, minScale: scale, loading: false })); }, function () {
