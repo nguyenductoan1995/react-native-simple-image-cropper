@@ -232,12 +232,12 @@ var ImageViewer = /** @class */ (function (_super) {
                 ]);
             }),
             react_1.default.createElement(react_native_gesture_handler_1.PanGestureHandler, { ref: this.dragRef, simultaneousHandlers: this.pinchRef, minPointers: 1, maxPointers: 2, avgTouches: true, onGestureEvent: this.onPanGestureEvent, onHandlerStateChange: this.onPanGestureEvent },
-                react_1.default.createElement(react_native_1.Animated.View, { style: containerStyles },
+                react_1.default.createElement(react_native_reanimated_1.default.View, { style: containerStyles },
                     react_1.default.createElement(react_native_gesture_handler_1.TapGestureHandler, { numberOfTaps: 2, onHandlerStateChange: this.onTapGestureEvent },
-                        react_1.default.createElement(react_native_1.Animated.View, { style: areaStyles },
+                        react_1.default.createElement(react_native_reanimated_1.default.View, { style: areaStyles },
                             react_1.default.createElement(react_native_gesture_handler_1.PinchGestureHandler, { ref: this.pinchRef, onGestureEvent: this.onPinchGestureEvent, onHandlerStateChange: this.onPinchGestureEvent },
-                                react_1.default.createElement(react_native_1.Animated.View, { style: imageWrapperStyles, collapsable: false },
-                                    react_1.default.createElement(react_native_1.Animated.View, { style: imageStyles },
+                                react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageWrapperStyles, collapsable: false },
+                                    react_1.default.createElement(react_native_reanimated_1.default.View, { style: imageStyles },
                                         react_1.default.createElement(react_native_video_1.default, { repeat: true, resizeMode: "contain", source: imageSrc, style: { flex: 1 } })),
                                     overlay && (react_1.default.createElement(react_native_1.View, { style: overlayContainerStyle }, overlay))))))))));
     };
