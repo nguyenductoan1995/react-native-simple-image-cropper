@@ -114,15 +114,17 @@ var ImageCropper = /** @class */ (function (_super) {
                     fittedSize.height = w;
                 }
                 if (areaWidth < areaHeight || areaWidth === areaHeight) {
-                    // if (width < height) {
-                    //   if (fittedSize.height < areaHeight) {
-                    //     scale =(areaHeight / fittedSize.height) ;
-                    //   } else {
-                    //     scale = (areaWidth / fittedSize.width);
-                    //   }
-                    // } else {
-                    //   scale = (areaHeight / fittedSize.height) 
-                    // }
+                    if (width < height) {
+                        if (fittedSize.height < areaHeight) {
+                            scale = (areaHeight / fittedSize.height);
+                        }
+                        else {
+                            scale = (areaWidth / fittedSize.width);
+                        }
+                    }
+                    else {
+                        scale = (areaHeight / fittedSize.height);
+                    }
                 }
                 scale = scale < 1 ? 1 : scale;
                 _this.setState(function (prevState) { return (__assign(__assign({}, prevState), { srcSize: srcSize,
