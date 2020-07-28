@@ -45,7 +45,7 @@ const {
   sub,
   multiply,
   divide,
-  call,
+  // call,
 } = Animated;
 
 const styles = StyleSheet.create({
@@ -436,7 +436,7 @@ class ImageViewer extends Component<IProps, IState> {
 
     return (
       <>
-        <Animated.Code>
+        {/* <Animated.Code>
           {() =>
             block([
               call(
@@ -445,7 +445,7 @@ class ImageViewer extends Component<IProps, IState> {
               ),
             ])
           }
-        </Animated.Code>
+        </Animated.Code> */}
         <PanGestureHandler
           ref={this.dragRef}
           simultaneousHandlers={this.pinchRef}

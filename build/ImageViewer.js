@@ -44,7 +44,7 @@ var defaultProps = {
     containerColor: 'black',
     imageBackdropColor: 'black',
 };
-var Value = react_native_reanimated_1.default.Value, event = react_native_reanimated_1.default.event, block = react_native_reanimated_1.default.block, set = react_native_reanimated_1.default.set, cond = react_native_reanimated_1.default.cond, eq = react_native_reanimated_1.default.eq, and = react_native_reanimated_1.default.and, greaterThan = react_native_reanimated_1.default.greaterThan, greaterOrEq = react_native_reanimated_1.default.greaterOrEq, lessThan = react_native_reanimated_1.default.lessThan, add = react_native_reanimated_1.default.add, sub = react_native_reanimated_1.default.sub, multiply = react_native_reanimated_1.default.multiply, divide = react_native_reanimated_1.default.divide, call = react_native_reanimated_1.default.call;
+var Value = react_native_reanimated_1.default.Value, event = react_native_reanimated_1.default.event, block = react_native_reanimated_1.default.block, set = react_native_reanimated_1.default.set, cond = react_native_reanimated_1.default.cond, eq = react_native_reanimated_1.default.eq, and = react_native_reanimated_1.default.and, greaterThan = react_native_reanimated_1.default.greaterThan, greaterOrEq = react_native_reanimated_1.default.greaterOrEq, lessThan = react_native_reanimated_1.default.lessThan, add = react_native_reanimated_1.default.add, sub = react_native_reanimated_1.default.sub, multiply = react_native_reanimated_1.default.multiply, divide = react_native_reanimated_1.default.divide;
 var styles = react_native_1.StyleSheet.create({
     panGestureInner: __assign(__assign({}, react_native_1.StyleSheet.absoluteFillObject), { alignItems: 'center', justifyContent: 'center' }),
     imageWrapper: {
@@ -183,7 +183,6 @@ var ImageViewer = /** @class */ (function (_super) {
         }
     };
     ImageViewer.prototype.render = function () {
-        var _this = this;
         var _a = this.props, image = _a.image, imageWidth = _a.imageWidth, imageHeight = _a.imageHeight, areaWidth = _a.areaWidth, areaHeight = _a.areaHeight, containerColor = _a.containerColor, imageBackdropColor = _a.imageBackdropColor, overlay = _a.overlay;
         var imageSrc = {
             uri: image,
@@ -226,11 +225,6 @@ var ImageViewer = /** @class */ (function (_super) {
             },
         ];
         return (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(react_native_reanimated_1.default.Code, null, function () {
-                return block([
-                    call([_this.translateX, _this.translateY, _this.scale], _this.handleMove),
-                ]);
-            }),
             react_1.default.createElement(react_native_gesture_handler_1.PanGestureHandler, { ref: this.dragRef, simultaneousHandlers: this.pinchRef, minPointers: 1, maxPointers: 2, avgTouches: true, onGestureEvent: this.onPanGestureEvent, onHandlerStateChange: this.onPanGestureEvent },
                 react_1.default.createElement(react_native_reanimated_1.default.View, { style: containerStyles },
                     react_1.default.createElement(react_native_gesture_handler_1.TapGestureHandler, { numberOfTaps: 2, onHandlerStateChange: this.onTapGestureEvent },
