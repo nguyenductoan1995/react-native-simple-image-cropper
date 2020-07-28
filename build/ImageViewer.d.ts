@@ -1,6 +1,6 @@
 import { Component, RefObject, ReactNode } from 'react';
 import { PanGestureHandler, PinchGestureHandler } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
+import Animateds from 'react-native-reanimated';
 import { IImageViewerData } from './types';
 interface IProps {
     image: string;
@@ -24,9 +24,9 @@ declare class ImageViewer extends Component<IProps, IState> {
     };
     pinchRef: RefObject<PinchGestureHandler>;
     dragRef: RefObject<PanGestureHandler>;
-    translateX: Animated.Value<number>;
-    translateY: Animated.Value<number>;
-    scale: Animated.Value<number>;
+    translateX: Animateds.Value<number>;
+    translateY: Animateds.Value<number>;
+    scale: Animateds.Value<number>;
     static getDerivedStateFromProps(props: IProps, state: IState): {
         minScale: number;
     } | null;

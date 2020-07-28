@@ -1,12 +1,13 @@
 import React, { Component, RefObject, ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,Animated, } from 'react-native';
 import {
   TapGestureHandler,
   PanGestureHandler,
   PinchGestureHandler,
   State,
+  
 } from 'react-native-gesture-handler';
-import Animated, { Easing } from 'react-native-reanimated';
+ import Animateds, {Easing} from 'react-native-reanimated';
 import { timing } from 'react-native-redash';
 import { IImageViewerData } from './types';
 import Video from 'react-native-video'
@@ -45,8 +46,8 @@ const {
   sub,
   multiply,
   divide,
-  // call,
-} = Animated;
+  call,
+} = Animateds;
 
 const styles = StyleSheet.create({
   panGestureInner: {
@@ -77,11 +78,11 @@ class ImageViewer extends Component<IProps, IState> {
 
   dragRef: RefObject<PanGestureHandler>;
 
-  translateX: Animated.Value<number>;
+  translateX: Animateds.Value<number>;
 
-  translateY: Animated.Value<number>;
+  translateY: Animateds.Value<number>;
 
-  scale: Animated.Value<number>;
+  scale: Animateds.Value<number>;
 
   static getDerivedStateFromProps(props: IProps, state: IState) {
     if (props.minScale !== state.minScale) {
@@ -436,7 +437,7 @@ class ImageViewer extends Component<IProps, IState> {
 
     return (
       <>
-        {/* <Animated.Code>
+        <Animateds.Code>
           {() =>
             block([
               call(
@@ -445,7 +446,7 @@ class ImageViewer extends Component<IProps, IState> {
               ),
             ])
           }
-        </Animated.Code> */}
+        </Animateds.Code>
         <PanGestureHandler
           ref={this.dragRef}
           simultaneousHandlers={this.pinchRef}
