@@ -127,7 +127,7 @@ var ImageCropper = /** @class */ (function (_super) {
                     }
                 }
                 else {
-                    if (width < height) {
+                    if (width > height) {
                         if (fittedSize.height < areaHeight) {
                             scale = (areaHeight / fittedSize.height);
                         }
